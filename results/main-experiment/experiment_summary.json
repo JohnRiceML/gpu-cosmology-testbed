@@ -1,0 +1,965 @@
+{
+  "M_complete": 160.0,
+  "M_complete_source": "command line (--m-complete)",
+  "closure_test": {
+    "all_pass": false,
+    "definition": "fiducial galaxy model on the top-n_mw CDM hosts' paired counterparts: n_direct = WDM simulation, n_emulator = CDM satellites x fitted 2D f(M_peak); pass if |emulator - direct| <= 2 sqrt(n_direct)",
+    "per_model": [
+      {
+        "M_hm": 30.000008143595295,
+        "emulator_over_direct": 0.9680681205206884,
+        "model": "wdm_khm3.12",
+        "n_direct": 918.6132602347936,
+        "n_direct_err": 30.308633427371706,
+        "n_direct_host_boot_err": 202.1775837997994,
+        "n_emulator": 889.2802123208787,
+        "n_hosts": 28,
+        "pass": true
+      },
+      {
+        "M_hm": 299.99988164216063,
+        "emulator_over_direct": 0.8820322023825111,
+        "model": "wdm_khm0.99",
+        "n_direct": 981.0243331851292,
+        "n_direct_err": 31.321307973728192,
+        "n_direct_host_boot_err": 200.72595210959653,
+        "n_emulator": 865.2950531901139,
+        "n_hosts": 28,
+        "pass": false
+      },
+      {
+        "M_hm": 2999.9931296900845,
+        "emulator_over_direct": 0.9457263680554964,
+        "model": "wdm_khm0.31",
+        "n_direct": 341.19925373663193,
+        "n_direct_err": 18.471579622128473,
+        "n_direct_host_boot_err": 78.66840470246638,
+        "n_emulator": 322.6811310195907,
+        "n_hosts": 24,
+        "pass": true
+      }
+    ]
+  },
+  "experiment_dir": "D:\\cosmo-runs\\experiments\\exp-corrected",
+  "fragmentation": {
+    "clean_mode": "lovell",
+    "cleaning": "Lovell 2014: flag WDM haloes with M < 0.5 M_lim and proto-halo s < s_cut (CDM 1st percentile, > 100 particles)",
+    "formula": "M_lim,2D = kappa pi Sigma d / k_peak, kappa = 4*10.1/pi^3 (Wang & White 2007 transcribed)",
+    "per_model": [
+      {
+        "M_lim_2D": 4.302151026923482,
+        "M_lim_over_Mhm": null,
+        "centrals_resolved": 6550,
+        "centrals_with_s_below_cut": 39,
+        "centrals_with_shape": 84218,
+        "clean_mode": "lovell",
+        "frac_branches_below_Mlim": 0.0,
+        "frac_centrals_below_Mlim": 0.0,
+        "frac_centrals_flagged_spurious": 0.0,
+        "frac_resolved_subhaloes_s_below_cut": 0.003685956505713233,
+        "k_peak": 2.9229216821387585,
+        "model": "cdm",
+        "subhaloes_flagged_spurious": 0,
+        "surviving_subhaloes_removed_from_hosts": 0
+      },
+      {
+        "M_lim_2D": 10.199606861680918,
+        "M_lim_over_Mhm": 0.33998680309886625,
+        "centrals_resolved": 6514,
+        "centrals_with_s_below_cut": 20,
+        "centrals_with_shape": 66577,
+        "clean_mode": "lovell",
+        "frac_branches_below_Mlim": 0.0,
+        "frac_centrals_below_Mlim": 0.0,
+        "frac_centrals_flagged_spurious": 0.0,
+        "frac_resolved_subhaloes_s_below_cut": 0.002976190476190476,
+        "k_peak": 1.2328760007086987,
+        "model": "wdm_khm3.12",
+        "subhaloes_flagged_spurious": 0,
+        "surviving_subhaloes_removed_from_hosts": 0
+      },
+      {
+        "M_lim_2D": 29.735983619666285,
+        "M_lim_over_Mhm": 0.09911998450431163,
+        "centrals_resolved": 5146,
+        "centrals_with_s_below_cut": 16,
+        "centrals_with_shape": 24979,
+        "clean_mode": "lovell",
+        "frac_branches_below_Mlim": 0.0,
+        "frac_centrals_below_Mlim": 0.0,
+        "frac_centrals_flagged_spurious": 0.0,
+        "frac_resolved_subhaloes_s_below_cut": 0.001840264998159735,
+        "k_peak": 0.42288328771184913,
+        "model": "wdm_khm0.99",
+        "subhaloes_flagged_spurious": 0,
+        "surviving_subhaloes_removed_from_hosts": 0
+      },
+      {
+        "M_lim_2D": 93.1897134177176,
+        "M_lim_over_Mhm": 0.031063308944092347,
+        "centrals_resolved": 1560,
+        "centrals_with_s_below_cut": 1,
+        "centrals_with_shape": 5482,
+        "clean_mode": "lovell",
+        "frac_branches_below_Mlim": 0.0,
+        "frac_centrals_below_Mlim": 0.0,
+        "frac_centrals_flagged_spurious": 0.0,
+        "frac_resolved_subhaloes_s_below_cut": 0.0009174311926605505,
+        "k_peak": 0.1349381820723508,
+        "model": "wdm_khm0.31",
+        "subhaloes_flagged_spurious": 27,
+        "surviving_subhaloes_removed_from_hosts": 20
+      }
+    ],
+    "proto_shape_cut_s": 0.03284422918769758
+  },
+  "galaxy_model": {
+    "M_norm": 100.0,
+    "M_peak_at_L_cut": 191.5179135734077,
+    "M_peak_at_V50_fiducial": 239.46366425011698,
+    "V_res": 2.17362,
+    "fiducial": {
+      "V50_over_Vres": 1.5,
+      "p_orph": 0.5,
+      "sigma_M_dex": 0.2,
+      "sigma_gal_over_V50": 0.15,
+      "tau_orph_a": 0.5
+    },
+    "lf_bin_edges_log10L": [
+      0.5644188036299795,
+      1.0644188036299795,
+      1.5644188036299795,
+      2.0644188036299793,
+      2.5644188036299793,
+      3.0644188036299793,
+      3.5644188036299793,
+      4.064418803629979
+    ],
+    "log10_L_cut": 0.5644188036299795,
+    "lum_slope": 2.0,
+    "prior_fiducial": "Prior { v50: (1.2, 1.9), sigma_gal: (0.0, 0.3), sigma_m: (0.1, 0.3), p_orph: (0.0, 1.0) }",
+    "prior_wide": "Prior { v50: (0.5, 4.0), sigma_gal: (0.0, 0.3), sigma_m: (0.1, 0.3), p_orph: (0.0, 1.0) }",
+    "regime": "threshold limited",
+    "satellite_label": "observable",
+    "target_reachable": true
+  },
+  "images": [
+    {
+      "box_png": "box_cdm.png",
+      "host_png": "host_cdm.png",
+      "model": "cdm"
+    },
+    {
+      "box_png": "box_wdm_khm3.12.png",
+      "host_png": "host_wdm_khm3.12.png",
+      "model": "wdm_khm3.12"
+    },
+    {
+      "box_png": "box_wdm_khm0.99.png",
+      "host_png": "host_wdm_khm0.99.png",
+      "model": "wdm_khm0.99"
+    },
+    {
+      "box_png": "box_wdm_khm0.31.png",
+      "host_png": "host_wdm_khm0.31.png",
+      "model": "wdm_khm0.31"
+    },
+    {
+      "color_scale": "log10(rho/rho_bar), range fixed from the first (CDM) model",
+      "host_id_cdm": 0,
+      "zoom_center": [
+        1629.2825,
+        831.2161
+      ],
+      "zoom_half_width": 35.11725
+    }
+  ],
+  "mock_constraint": {
+    "M_hm_95_likelihood_ratio_fiducial": null,
+    "M_hm_95_likelihood_ratio_wide": null,
+    "M_hm_95_posterior_fiducial": null,
+    "M_hm_95_posterior_wide": null,
+    "M_hm_grid": [
+      3.0000008143595296,
+      89999.79389070254
+    ],
+    "direct_interpolation": {
+      "fiducial_prior": {
+        "likelihood_ratio_95": 28.833861432077313,
+        "posterior_95": 401.661565053463,
+        "status": "below the lowest simulated M_hm (30.000008143595295): set by interpolation towards the CDM anchor (anchor-dependent); quote as M_hm < 30.000008143595295"
+      },
+      "method": "per-model predictions from each simulation's own paired satellites, ln mu interpolated linearly in ln M_hm; CDM anchored at min(M_hm)/10; no extrapolation above the largest simulated M_hm",
+      "wide_threshold_prior": {
+        "likelihood_ratio_95": 534.7638060416637,
+        "posterior_95": 477.32611058608694,
+        "status": "reported"
+      }
+    },
+    "direct_interpolation_suppression_only": {
+      "fiducial_prior": {
+        "likelihood_ratio_95": 419.647678769569,
+        "posterior_95": 343.82262854111013,
+        "status": "reported"
+      },
+      "method": "as direct_interpolation, but each WDM prediction is capped at the CDM prediction (per LF bin and parameter draw): conservative, insensitive to WDM satellite excesses",
+      "wide_threshold_prior": {
+        "likelihood_ratio_95": 441.63678069702837,
+        "posterior_95": 367.42996518754717,
+        "status": "reported"
+      }
+    },
+    "direct_interpolation_suppression_only_with_count_systematic": {
+      "fiducial_prior": {
+        "likelihood_ratio_95": 478.86372375181156,
+        "posterior_95": 389.77403875454115,
+        "status": "reported"
+      },
+      "method": "as suppression_only, with a lognormal satellite-count nuisance of 0.1 (finder f_esc systematic) marginalised per draw",
+      "wide_threshold_prior": {
+        "likelihood_ratio_95": 516.5005177505897,
+        "posterior_95": 420.06228679097916,
+        "status": "reported"
+      }
+    },
+    "emulator_fitted_f": {
+      "fiducial_prior": {
+        "likelihood_ratio_95": null,
+        "posterior_95": null,
+        "status": "not reported (emulator fails closure)"
+      },
+      "logL_cdm_fiducial": -28.12314659881804,
+      "logL_cdm_wide": -29.796724154208814,
+      "suppression": {
+        "M50_over_Mhm": 0.39827856119546545,
+        "alpha": 0.8557587507598929,
+        "beta": 8.326132862184693,
+        "gamma": -0.10881692705590458
+      },
+      "wide_threshold_prior": {
+        "likelihood_ratio_95": null,
+        "posterior_95": null,
+        "status": "not reported (emulator fails closure)"
+      }
+    },
+    "n_hosts": 24,
+    "n_observed_total": 826.0,
+    "observed_counts_stacked": [
+      207.0,
+      220.0,
+      156.0,
+      96.0,
+      61.0,
+      44.0,
+      17.0,
+      25.0
+    ],
+    "posterior_prior": "flat in log10 M_hm over the grid: the posterior limit depends on the lower grid bound; prefer the likelihood-ratio limit",
+    "satellite_label": "observable"
+  },
+  "models": [
+    "cdm",
+    "wdm_khm3.12",
+    "wdm_khm0.99",
+    "wdm_khm0.31"
+  ],
+  "mw_analogues": {
+    "mass_range": [
+      47111.99855285691,
+      912538.03872888
+    ],
+    "n_cdm": 30,
+    "n_paired_in_all_models": 24,
+    "selection": "top n_mw CDM hosts by m_fof; WDM = their particle-ID-paired counterparts"
+  },
+  "options": {
+    "fit_min_particles": 160.0,
+    "halo_fit_min_particles": 160.0,
+    "host_min_particles": 1000.0,
+    "n_boot": 200,
+    "n_mc": 1000,
+    "n_mw": 30,
+    "seed": 20260,
+    "target_sats": 30.0
+  },
+  "pairing": [
+    {
+      "frac_hosts_with_shared_ge_0.5": 1.0,
+      "method": "identity",
+      "model": "cdm",
+      "mw_paired": 30,
+      "n_cdm_hosts": 1792,
+      "n_paired": 1792,
+      "pairing_fraction": 1.0,
+      "shared_frac_percentiles_5_16_50_84_95": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "frac_hosts_with_shared_ge_0.5": 0.9793180547792063,
+      "method": "particle IDs (FoF b=0.2 at a=1, mutual best, shared >= 0.5)",
+      "model": "wdm_khm3.12",
+      "mw_paired": 28,
+      "n_cdm_hosts": 1792,
+      "n_paired": 1578,
+      "pairing_fraction": 0.8805803571428571,
+      "shared_frac_percentiles_5_16_50_84_95": [
+        0.6046416938110749,
+        0.7779960707269156,
+        0.8927294398092968,
+        0.9345918638659931,
+        0.9510633904604584
+      ]
+    },
+    {
+      "frac_hosts_with_shared_ge_0.5": 0.9407490217998882,
+      "method": "particle IDs (FoF b=0.2 at a=1, mutual best, shared >= 0.5)",
+      "model": "wdm_khm0.99",
+      "mw_paired": 28,
+      "n_cdm_hosts": 1792,
+      "n_paired": 1400,
+      "pairing_fraction": 0.78125,
+      "shared_frac_percentiles_5_16_50_84_95": [
+        0.4844851904090268,
+        0.6543739279588336,
+        0.797045101088647,
+        0.8732612055641422,
+        0.9119822485207101
+      ]
+    },
+    {
+      "frac_hosts_with_shared_ge_0.5": 0.6422582448295137,
+      "method": "particle IDs (FoF b=0.2 at a=1, mutual best, shared >= 0.5)",
+      "model": "wdm_khm0.31",
+      "mw_paired": 24,
+      "n_cdm_hosts": 1792,
+      "n_paired": 830,
+      "pairing_fraction": 0.46316964285714285,
+      "shared_frac_percentiles_5_16_50_84_95": [
+        0.1370906321401371,
+        0.3193916349809886,
+        0.6020426131361155,
+        0.7848814229249012,
+        0.8508205542103847
+      ]
+    }
+  ],
+  "satellites_per_model": [
+    {
+      "M_hm_2D": 0.0,
+      "host_to_host_std": 35.14098995162729,
+      "mean_observable_satellites_per_mw_host_fiducial": 30.00000000000001,
+      "mean_resolved_or_observable_satellites_per_mw_host_fiducial": 30.00000000000001,
+      "mean_surviving_subhalos_per_mw_host_mpeak_ge_M_complete": 38.46666666666666,
+      "model": "cdm",
+      "n_hosts_ge_host_min": 1792,
+      "n_mw_hosts_paired": 30,
+      "paired_with_cdm": 1792,
+      "satellite_label": "observable"
+    },
+    {
+      "M_hm_2D": 30.000008143595295,
+      "host_to_host_std": 38.23624502114979,
+      "mean_observable_satellites_per_mw_host_fiducial": 32.80761643695691,
+      "mean_resolved_or_observable_satellites_per_mw_host_fiducial": 32.80761643695691,
+      "mean_surviving_subhalos_per_mw_host_mpeak_ge_M_complete": 40.857142857142854,
+      "model": "wdm_khm3.12",
+      "n_hosts_ge_host_min": 1805,
+      "n_mw_hosts_paired": 28,
+      "paired_with_cdm": 1578,
+      "satellite_label": "observable"
+    },
+    {
+      "M_hm_2D": 299.99988164216063,
+      "host_to_host_std": 39.465889272412944,
+      "mean_observable_satellites_per_mw_host_fiducial": 35.03658332804033,
+      "mean_resolved_or_observable_satellites_per_mw_host_fiducial": 35.03658332804033,
+      "mean_surviving_subhalos_per_mw_host_mpeak_ge_M_complete": 41.82142857142857,
+      "model": "wdm_khm0.99",
+      "n_hosts_ge_host_min": 1668,
+      "n_mw_hosts_paired": 28,
+      "paired_with_cdm": 1400,
+      "satellite_label": "observable"
+    },
+    {
+      "M_hm_2D": 2999.9931296900845,
+      "host_to_host_std": 16.007979775072712,
+      "mean_observable_satellites_per_mw_host_fiducial": 14.216635572359664,
+      "mean_resolved_or_observable_satellites_per_mw_host_fiducial": 14.216635572359664,
+      "mean_surviving_subhalos_per_mw_host_mpeak_ge_M_complete": 16.083333333333332,
+      "model": "wdm_khm0.31",
+      "n_hosts_ge_host_min": 1218,
+      "n_mw_hosts_paired": 24,
+      "paired_with_cdm": 830,
+      "satellite_label": "observable"
+    }
+  ],
+  "suppression": {
+    "form": "f(M) = [1 + (alpha M_hm / M)^beta]^gamma, M = M_peak (subhalo) or central mass (halo)",
+    "halo_2D_fit": {
+      "M50_over_Mhm": 0.3596118871564635,
+      "M50_over_Mhm_16_84": [
+        0.3474756067319243,
+        0.3697405956810884
+      ],
+      "alpha": 0.08511927175143,
+      "alpha_16_84": [
+        0.049414849094836774,
+        0.11947365762741066
+      ],
+      "best_fit_at_clamp_alpha_beta_gamma": [
+        false,
+        false,
+        false
+      ],
+      "beta": 1.1231575459935856,
+      "beta_16_84": [
+        1.0720666695643926,
+        1.176583054869168
+      ],
+      "bootstrap_fraction_at_clamp": 0.04,
+      "bootstrap_samples": 200,
+      "clamps": "ln alpha in [-8,8], ln beta in [-3,5] (beta <= 148), ln(-gamma) in [-5,2.5]",
+      "gamma": -3.833204487525617,
+      "gamma_16_84": [
+        -6.0891640424703715,
+        -2.891839576183691
+      ],
+      "neg_log_like": 20238.797979388535
+    },
+    "reference_3D": {
+      "COZMIC_I_Mpeak": {
+        "M50_over_Mhm": 2.4999999999999996,
+        "alpha": 2.5,
+        "beta": 0.9,
+        "gamma": -1.0
+      },
+      "Lovell2014_genuine_subhaloes": {
+        "M50_over_Mhm": 2.6625850650643312,
+        "alpha": 2.7,
+        "beta": 1.0,
+        "gamma": -0.99
+      },
+      "Lovell2020b_centrals": {
+        "M50_over_Mhm": 2.299999999999999,
+        "alpha": 2.3,
+        "beta": 0.8,
+        "gamma": -1.0
+      },
+      "Lovell2020b_subhalo_bound_mass_sterile_nu": {
+        "M50_over_Mhm": 1.063419483162856,
+        "alpha": 4.2,
+        "beta": 2.5,
+        "gamma": -0.2
+      }
+    },
+    "sigma_space": {
+      "fit_2D": {
+        "M50_over_Mhm": 0.8809151063665683,
+        "M50_over_Mhm_16_84": [
+          0.8752866454120769,
+          0.8848804276892623
+        ],
+        "alpha": 0.9804581263130863,
+        "alpha_16_84": [
+          0.970825849746466,
+          0.9877617417265089
+        ],
+        "best_fit_at_clamp_alpha_beta_gamma": [
+          false,
+          false,
+          false
+        ],
+        "beta": 58.2138847606252,
+        "beta_16_84": [
+          41.09551186313937,
+          118.1266144984027
+        ],
+        "bootstrap_fraction_at_clamp": 0.14,
+        "bootstrap_samples": 200,
+        "clamps": "ln alpha in [-8,8], ln beta in [-3,5] (beta <= 148), ln(-gamma) in [-5,2.5]",
+        "gamma": -0.11118347309354469,
+        "gamma_16_84": [
+          -0.15668997687320202,
+          -0.051935936334938655
+        ],
+        "neg_log_like": 11784.154139484208
+      },
+      "form": "f = [1 + (alpha x)^beta]^gamma",
+      "mapping_3D": "3D sigma ~ M^-(n3+3)/6 with n3 = n2D - 1 = -2.5 (Beacom et al. 1991), so M_hm/M = x^(6/(n3+3)) = x^12.0",
+      "variable": "x = sigma_CDM(M) / sigma_CDM(M_hm), in-box 2D top-hat, CDM linear spectrum (growth cancels)",
+      "x50_2D_mass_fit_per_model": [
+        {
+          "model": "wdm_khm3.12",
+          "x50": 1.1086309993665076
+        },
+        {
+          "model": "wdm_khm0.99",
+          "x50": 1.1293380636423767
+        },
+        {
+          "model": "wdm_khm0.31",
+          "x50": 1.1405319429497993
+        }
+      ],
+      "x50_2D_sigma_fit": 1.1351831666556502,
+      "x50_3D": {
+        "COZMIC_I": 0.9264848724790692,
+        "Lovell2014": 0.9216330544403868,
+        "Lovell2020b_bound": 0.9948889690366505
+      },
+      "x_range_measured": [
+        0.2314055370283505,
+        1.4651400669163586
+      ]
+    },
+    "subhalo_2D_fit": {
+      "M50_over_Mhm": 0.39827856119546545,
+      "M50_over_Mhm_16_84": [
+        0.3851412951015069,
+        0.41564208324057156
+      ],
+      "alpha": 0.8557587507598929,
+      "alpha_16_84": [
+        0.8111073833447089,
+        0.9131237078000091
+      ],
+      "best_fit_at_clamp_alpha_beta_gamma": [
+        false,
+        false,
+        false
+      ],
+      "beta": 8.326132862184693,
+      "beta_16_84": [
+        6.178037497604375,
+        14.701984459852758
+      ],
+      "bootstrap_fraction_at_clamp": 0.06,
+      "bootstrap_samples": 200,
+      "clamps": "ln alpha in [-8,8], ln beta in [-3,5] (beta <= 148), ln(-gamma) in [-5,2.5]",
+      "gamma": -0.10881692705590458,
+      "gamma_16_84": [
+        -0.14619676988899297,
+        -0.06057089480024552
+      ],
+      "neg_log_like": 11784.41995402376
+    },
+    "subhalo_fit_sample": "surviving subhaloes within R_host of particle-ID-paired hosts, M_peak >= M_complete; pair-level bootstrap"
+  },
+  "theory": [
+    {
+      "M_hm_2D": 0.0,
+      "M_hm_meta": null,
+      "alpha": 0.0,
+      "is_cdm": true,
+      "k_hm": 0.0,
+      "model": "cdm",
+      "nu": 1.12,
+      "particle_mass": 0.1059638129,
+      "particles": 37748736.0,
+      "pred_suppression_at": [
+        {
+          "M": 10.0,
+          "f_COZMIC_I": 1.0,
+          "f_Lovell2014_sub": 1.0,
+          "f_Lovell2020b_cen": 1.0,
+          "f_halo_2D_fit": 1.0,
+          "f_sub_2D_fit": 1.0
+        },
+        {
+          "M": 100.0,
+          "f_COZMIC_I": 1.0,
+          "f_Lovell2014_sub": 1.0,
+          "f_Lovell2020b_cen": 1.0,
+          "f_halo_2D_fit": 1.0,
+          "f_sub_2D_fit": 1.0
+        },
+        {
+          "M": 1000.0,
+          "f_COZMIC_I": 1.0,
+          "f_Lovell2014_sub": 1.0,
+          "f_Lovell2020b_cen": 1.0,
+          "f_halo_2D_fit": 1.0,
+          "f_sub_2D_fit": 1.0
+        },
+        {
+          "M": 10000.0,
+          "f_COZMIC_I": 1.0,
+          "f_Lovell2014_sub": 1.0,
+          "f_Lovell2020b_cen": 1.0,
+          "f_halo_2D_fit": 1.0,
+          "f_sub_2D_fit": 1.0
+        },
+        {
+          "M": 100000.0,
+          "f_COZMIC_I": 1.0,
+          "f_Lovell2014_sub": 1.0,
+          "f_Lovell2020b_cen": 1.0,
+          "f_halo_2D_fit": 1.0,
+          "f_sub_2D_fit": 1.0
+        },
+        {
+          "M": 1000000.0,
+          "f_COZMIC_I": 1.0,
+          "f_Lovell2014_sub": 1.0,
+          "f_Lovell2020b_cen": 1.0,
+          "f_halo_2D_fit": 1.0,
+          "f_sub_2D_fit": 1.0
+        },
+        {
+          "M": 10000000.0,
+          "f_COZMIC_I": 1.0,
+          "f_Lovell2014_sub": 1.0,
+          "f_Lovell2020b_cen": 1.0,
+          "f_halo_2D_fit": 1.0,
+          "f_sub_2D_fit": 1.0
+        }
+      ],
+      "sigma_CDM_at_M_hm": null,
+      "sigma_bar_particles_per_area": 9.437184,
+      "sigma_of_M_a1": [
+        {
+          "M": 10.0,
+          "sigma": 4.68091084617247
+        },
+        {
+          "M": 100.0,
+          "sigma": 3.569890800508213
+        },
+        {
+          "M": 1000.0,
+          "sigma": 2.6197776485526734
+        },
+        {
+          "M": 10000.0,
+          "sigma": 1.8709673437349235
+        },
+        {
+          "M": 100000.0,
+          "sigma": 1.2677142105749473
+        },
+        {
+          "M": 1000000.0,
+          "sigma": 0.744042988954178
+        },
+        {
+          "M": 10000000.0,
+          "sigma": 0.2355222882216681
+        }
+      ]
+    },
+    {
+      "M_hm_2D": 30.000008143595295,
+      "M_hm_meta": 29.99999634780979,
+      "alpha": 0.1443886,
+      "is_cdm": false,
+      "k_hm": 3.123096,
+      "model": "wdm_khm3.12",
+      "nu": 1.12,
+      "particle_mass": 0.1059638129,
+      "particles": 37748736.0,
+      "pred_suppression_at": [
+        {
+          "M": 10.0,
+          "f_COZMIC_I": 0.1402261440065693,
+          "f_Lovell2014_sub": 0.11234375034065362,
+          "f_Lovell2020b_cen": 0.17577810568145727,
+          "f_halo_2D_fit": 0.4727690676091472,
+          "f_sub_2D_fit": 0.42558802308690363
+        },
+        {
+          "M": 100.0,
+          "f_COZMIC_I": 0.5643692170292941,
+          "f_Lovell2014_sub": 0.5557739139082666,
+          "f_Lovell2020b_cen": 0.5736724711904426,
+          "f_halo_2D_fit": 0.94006483270614,
+          "f_sub_2D_fit": 0.999998682092404
+        },
+        {
+          "M": 1000.0,
+          "f_COZMIC_I": 0.9114315022659233,
+          "f_Lovell2014_sub": 0.9257901467424012,
+          "f_Lovell2020b_cen": 0.8946287314381427,
+          "f_halo_2D_fit": 0.9953215869735921,
+          "f_sub_2D_fit": 0.9999999999999938
+        },
+        {
+          "M": 10000.0,
+          "f_COZMIC_I": 0.9879142256243931,
+          "f_Lovell2014_sub": 0.9920451094192262,
+          "f_Lovell2020b_cen": 0.9816748709840645,
+          "f_halo_2D_fit": 0.9996467128531898,
+          "f_sub_2D_fit": 1.0
+        },
+        {
+          "M": 100000.0,
+          "f_COZMIC_I": 0.998462245909203,
+          "f_Lovell2014_sub": 0.9991987455526475,
+          "f_Lovell2020b_cen": 0.9970501741265467,
+          "f_halo_2D_fit": 0.9999733890886011,
+          "f_sub_2D_fit": 1.0
+        },
+        {
+          "M": 1000000.0,
+          "f_COZMIC_I": 0.9998061476607903,
+          "f_Lovell2014_sub": 0.999919816440627,
+          "f_Lovell2020b_cen": 0.9995313206981139,
+          "f_halo_2D_fit": 0.9999979959482116,
+          "f_sub_2D_fit": 1.0
+        },
+        {
+          "M": 10000000.0,
+          "f_COZMIC_I": 0.9999755913004036,
+          "f_Lovell2014_sub": 0.9999919810624519,
+          "f_Lovell2020b_cen": 0.9999256900287478,
+          "f_halo_2D_fit": 0.9999998490782255,
+          "f_sub_2D_fit": 1.0
+        }
+      ],
+      "sigma_CDM_at_M_hm": 4.146405822223358,
+      "sigma_bar_particles_per_area": 9.437184,
+      "sigma_of_M_a1": [
+        {
+          "M": 10.0,
+          "sigma": 4.26624149465136
+        },
+        {
+          "M": 100.0,
+          "sigma": 3.5172649225586508
+        },
+        {
+          "M": 1000.0,
+          "sigma": 2.6155423492693273
+        },
+        {
+          "M": 10000.0,
+          "sigma": 1.8706629123781255
+        },
+        {
+          "M": 100000.0,
+          "sigma": 1.267692661351076
+        },
+        {
+          "M": 1000000.0,
+          "sigma": 0.7440413202614483
+        },
+        {
+          "M": 10000000.0,
+          "sigma": 0.23552210435402135
+        }
+      ]
+    },
+    {
+      "M_hm_2D": 299.99988164216063,
+      "M_hm_meta": 299.9999634780979,
+      "alpha": 0.4565968,
+      "is_cdm": false,
+      "k_hm": 0.98761,
+      "model": "wdm_khm0.99",
+      "nu": 1.12,
+      "particle_mass": 0.1059638129,
+      "particles": 37748736.0,
+      "pred_suppression_at": [
+        {
+          "M": 10.0,
+          "f_COZMIC_I": 0.02011954306320729,
+          "f_Lovell2014_sub": 0.01274454848043502,
+          "f_Lovell2020b_cen": 0.03269521522004862,
+          "f_halo_2D_fit": 0.005608658774742141,
+          "f_sub_2D_fit": 0.052842563507744224
+        },
+        {
+          "M": 100.0,
+          "f_COZMIC_I": 0.1402262162696699,
+          "f_Lovell2014_sub": 0.11234381627149617,
+          "f_Lovell2020b_cen": 0.17577818287122798,
+          "f_halo_2D_fit": 0.47276930825073166,
+          "f_sub_2D_fit": 0.42558827978396346
+        },
+        {
+          "M": 1000.0,
+          "f_COZMIC_I": 0.5643693643911672,
+          "f_Lovell2014_sub": 0.5557740778919392,
+          "f_Lovell2020b_cen": 0.573672601494554,
+          "f_halo_2D_fit": 0.9400648758179472,
+          "f_sub_2D_fit": 0.9999986820997117
+        },
+        {
+          "M": 10000.0,
+          "f_COZMIC_I": 0.9114315506504478,
+          "f_Lovell2014_sub": 0.925790192479417,
+          "f_Lovell2020b_cen": 0.8946287816626526,
+          "f_halo_2D_fit": 0.9953215904627088,
+          "f_sub_2D_fit": 0.9999999999999938
+        },
+        {
+          "M": 100000.0,
+          "f_COZMIC_I": 0.9879142327808306,
+          "f_Lovell2014_sub": 0.9920451146746624,
+          "f_Lovell2020b_cen": 0.981674880568474,
+          "f_halo_2D_fit": 0.9996467131173893,
+          "f_sub_2D_fit": 1.0
+        },
+        {
+          "M": 1000000.0,
+          "f_COZMIC_I": 0.9984622468294865,
+          "f_Lovell2014_sub": 0.9991987460858365,
+          "f_Lovell2020b_cen": 0.9970501756935287,
+          "f_halo_2D_fit": 0.9999733891085062,
+          "f_sub_2D_fit": 1.0
+        },
+        {
+          "M": 10000000.0,
+          "f_COZMIC_I": 0.9998061477769592,
+          "f_Lovell2014_sub": 0.9999198164940233,
+          "f_Lovell2020b_cen": 0.9995313209477015,
+          "f_halo_2D_fit": 0.9999979959497105,
+          "f_sub_2D_fit": 1.0
+        }
+      ],
+      "sigma_CDM_at_M_hm": 3.08911315721807,
+      "sigma_bar_particles_per_area": 9.437184,
+      "sigma_of_M_a1": [
+        {
+          "M": 10.0,
+          "sigma": 3.373113953810841
+        },
+        {
+          "M": 100.0,
+          "sigma": 3.1875282148106137
+        },
+        {
+          "M": 1000.0,
+          "sigma": 2.5764675461016964
+        },
+        {
+          "M": 10000.0,
+          "sigma": 1.867506964303172
+        },
+        {
+          "M": 100000.0,
+          "sigma": 1.2674559602821998
+        },
+        {
+          "M": 1000000.0,
+          "sigma": 0.7440223830811297
+        },
+        {
+          "M": 10000000.0,
+          "sigma": 0.23552000340935098
+        }
+      ]
+    },
+    {
+      "M_hm_2D": 2999.9931296900845,
+      "M_hm_meta": 2999.999634780979,
+      "alpha": 1.443886,
+      "is_cdm": false,
+      "k_hm": 0.31231,
+      "model": "wdm_khm0.31",
+      "nu": 1.12,
+      "particle_mass": 0.1059638129,
+      "particles": 37748736.0,
+      "pred_suppression_at": [
+        {
+          "M": 10.0,
+          "f_COZMIC_I": 0.0025782474298789828,
+          "f_Lovell2014_sub": 0.0013184702589388096,
+          "f_Lovell2020b_cen": 0.005328453959364808,
+          "f_halo_2D_fit": 7.918418627737159e-7,
+          "f_sub_2D_fit": 0.00656085487853493
+        },
+        {
+          "M": 100.0,
+          "f_COZMIC_I": 0.02011957669702202,
+          "f_Lovell2014_sub": 0.012744572105513701,
+          "f_Lovell2020b_cen": 0.03269526318012704,
+          "f_halo_2D_fit": 0.005608692707837483,
+          "f_sub_2D_fit": 0.05284265426181167
+        },
+        {
+          "M": 1000.0,
+          "f_COZMIC_I": 0.14022642195259666,
+          "f_Lovell2014_sub": 0.11234400393090581,
+          "f_Lovell2020b_cen": 0.17577840257693117,
+          "f_halo_2D_fit": 0.4727699931897086,
+          "f_sub_2D_fit": 0.4255890104226893
+        },
+        {
+          "M": 10000.0,
+          "f_COZMIC_I": 0.5643697838278016,
+          "f_Lovell2014_sub": 0.5557745446392658,
+          "f_Lovell2020b_cen": 0.5736729723796183,
+          "f_halo_2D_fit": 0.9400649985270945,
+          "f_sub_2D_fit": 0.9999986821205116
+        },
+        {
+          "M": 100000.0,
+          "f_COZMIC_I": 0.9114316883673856,
+          "f_Lovell2014_sub": 0.9257903226607277,
+          "f_Lovell2020b_cen": 0.8946289246167632,
+          "f_halo_2D_fit": 0.995321600393782,
+          "f_sub_2D_fit": 0.9999999999999938
+        },
+        {
+          "M": 1000000.0,
+          "f_COZMIC_I": 0.9879142531502039,
+          "f_Lovell2014_sub": 0.9920451296332123,
+          "f_Lovell2020b_cen": 0.98167490784859,
+          "f_halo_2D_fit": 0.9996467138693814,
+          "f_sub_2D_fit": 1.0
+        },
+        {
+          "M": 10000000.0,
+          "f_COZMIC_I": 0.9984622494488904,
+          "f_Lovell2014_sub": 0.9991987476034526,
+          "f_Lovell2020b_cen": 0.9970501801536318,
+          "f_halo_2D_fit": 0.9999733891651605,
+          "f_sub_2D_fit": 1.0
+        }
+      ],
+      "sigma_CDM_at_M_hm": 2.240446870631447,
+      "sigma_bar_particles_per_area": 9.437184,
+      "sigma_of_M_a1": [
+        {
+          "M": 10.0,
+          "sigma": 2.4812159870940467
+        },
+        {
+          "M": 100.0,
+          "sigma": 2.4627884934994215
+        },
+        {
+          "M": 1000.0,
+          "sigma": 2.316909733698421
+        },
+        {
+          "M": 10000.0,
+          "sigma": 1.8364873954068517
+        },
+        {
+          "M": 100000.0,
+          "sigma": 1.264828886976957
+        },
+        {
+          "M": 1000000.0,
+          "sigma": 0.7437993567973579
+        },
+        {
+          "M": 10000000.0,
+          "sigma": 0.23549496727658298
+        }
+      ]
+    }
+  ],
+  "timings_s": {
+    "fits": 0.40424,
+    "likelihood": 0.8331093,
+    "total": 13.924374
+  },
+  "units": "masses in particle masses (catalog mass / particle_mass); lengths in box units; velocities as catalogued"
+}

@@ -1,0 +1,568 @@
+{
+  "conventions": {
+    "Delta2": "k^2 P(k) / (2 pi)  (2D dimensionless power per ln k)",
+    "P": "L^2 <|delta_k|^2>; sigma^2 = int P k dk/(2pi)",
+    "P_linear": "(a/a_init)^2 A k^n exp(-(k R_c)^2)",
+    "delta_k": "(1/N^2) sum_x delta(x) exp(-ik.x)",
+    "hmf": "dn/dlnM = (rho_bar/M) f(nu) |dln sigma/dln M| per unit area, nu = delta_c/sigma",
+    "mass_units": "particle masses; mass_frac = M / Np",
+    "pk_ratio": "P_particles / P_gpu (GPU log-log interpolated to the particle-bin k)",
+    "shot_noise": "L^2/Np x prod_i[1-(2/3)sin^2(k_i dx/2)] / W_CIC^2(k) (-> L^2/Np at low k)",
+    "sigma2": "D^2 int P0(k) [2 J1(kR)/(kR)]^2 k dk/(2pi), M = rho_bar pi R^2"
+  },
+  "delta_c_2d_tophat": 1.4661830455652918,
+  "delta_c_3d_tophat_check": 1.6864712109207765,
+  "meta": {
+    "a_final": 1,
+    "a_init": 0.02,
+    "box": 2000.0,
+    "equations": "dx/dt = p/a^2, dp/dt = -grad(phi)/a, laplacian(phi) = C delta with C = 3/2 H0^2 (comoving x, canonical momentum p = a^2 dx/dt); linear growth a^2 D'' + 3/2 a D' - C/H0^2 D = 0 => D = a, D_- = a^-3/2",
+    "growth": "D=a",
+    "initial_conditions": "Zel'dovich from a side x side particle lattice (cell-centred, offset half a lattice spacing; side = the multiple of mesh/2 nearest to sqrt(requested particles), so the lattice is commensurate with the mesh and its CIC harmonics alias only onto k=0/Nyquist); fixed-amplitude Gaussian field |delta_k| = sqrt(P0(k)/L^2) with random phases from a seeded white-noise field (Hermitian by construction), k = 0 and Nyquist row/column zeroed; displacement Psi_k = i k delta_k / k^2 deconvolved by the CIC window, CIC-interpolated to the lattice; x = q + (a/a_init) Psi, p = H0 a^(3/2) Psi / a_init",
+    "integrator": "KDK leapfrog with merged kicks (Quinn et al. 1997): kick factor int dt/a = 2(a2^1/2 - a1^1/2), drift factor int dt/a^2 = 2(a1^-1/2 - a2^-1/2); steps uniform in ln a (0.004 <= dln a <= 0.01; real time accumulates until a step is due) clamped onto snapshot epochs",
+    "lattice": 6144,
+    "mesh": 2048,
+    "notes": "2D cosmology (planar gravity with a 1/k^2 Poisson kernel). Lattice ICs have sub-Poisson noise, so subtracting the Poisson shot noise L^2/N_p under-estimates P at high k (it can go negative) until the particles have shell-crossed. Velocities in snapshots are synchronized with positions (partial kick). Internally the GPU stores each particle's f32 displacement from its lattice point (x = q + s) for precision; snapshots contain absolute positions. Run directory name is the UTC start time.",
+    "particles": 37748736,
+    "phase_flipped": false,
+    "pk_columns": "a,k,P_measured,P_linear,n_modes; P_linear = (a/a_init)^2 * <P0(k)> over the bin's modes (exact expectation for the fixed-amplitude ICs)",
+    "pk_convention": "delta_k=(1/N^2)sum delta e^-ikx; P=L^2<|delta_k|^2>",
+    "pk_measurement": {
+      "binning": "log-spaced from the fundamental 2pi/L to the Nyquist pi N/L; mean k per bin; modes on the Nyquist row/column excluded",
+      "bins": 40,
+      "cadence": "every 0.05 in ln a plus at snapshot epochs and a_final",
+      "cic_deconvolved": true,
+      "shot_noise_subtracted": 0.1059638
+    },
+    "pm": {
+      "assignment": "CIC",
+      "cell": 0.976562,
+      "force": "spectral gradient a_k = -i k phi_k",
+      "green": "phi_k = -C delta_k S(k) / (k^2 W_cic(k)^2), k=0 removed",
+      "mesh": 2048,
+      "nyquist_modes": "zeroed",
+      "periodic": true,
+      "smoothing": "S(k) = exp(-(k r_s)^2), r_s = 0.732422 (0.75 cells)"
+    },
+    "poisson_coefficient": 1.5,
+    "seed": 1,
+    "snapshot_format": "little-endian: 8-byte magic GSNAP001, u64 count, f32 a, f32 box, count x [f32 x, f32 y] comoving positions wrapped into [0, box), count x [f32 vx, f32 vy] peculiar velocities v = a dx/dt = p/a in box units per (1/H0)",
+    "snapshots": [
+      {
+        "a": 0.1,
+        "file": "snap_a0.100.bin"
+      },
+      {
+        "a": 0.2,
+        "file": "snap_a0.200.bin"
+      },
+      {
+        "a": 0.333,
+        "file": "snap_a0.333.bin"
+      },
+      {
+        "a": 0.5,
+        "file": "snap_a0.500.bin"
+      },
+      {
+        "a": 0.75,
+        "file": "snap_a0.750.bin"
+      },
+      {
+        "a": 1,
+        "file": "snap_a1.000.bin"
+      }
+    ],
+    "spectrum": {
+      "A": 0.0260476406,
+      "R_c": 1.464844,
+      "R_c_cells": 1.5,
+      "definition": "P0(k) = A k^n exp(-(k R_c)^2) at a_init (k in 1/box-length-units)",
+      "modes_binned": 3294092,
+      "n": -1,
+      "shape": "powerlaw_gauss",
+      "sigma_mesh_at_a_init": 0.05
+    },
+    "units": {
+      "expansion": "Einstein-de Sitter: H = H0 a^-3/2, dt = a^(1/2) da / H0",
+      "length": "box units (box = 2000.0)",
+      "time": "1/H0 with H0 = 1"
+    }
+  },
+  "meta_parsed": {
+    "A": 0.0260476406,
+    "R_c": 1.464844,
+    "a_final": 1.0,
+    "a_init": 0.02,
+    "box": 2000.0,
+    "growth": "D=a",
+    "lattice": 6144,
+    "mesh": 2048,
+    "n": -1.0,
+    "particles": 37748736,
+    "pk_convention": "delta_k=(1/N^2)sum delta e^-ikx; P=L^2<|delta_k|^2>",
+    "poisson_coefficient": 1.5,
+    "seed": 1,
+    "spectrum_shape": "powerlaw_gauss"
+  },
+  "run_dir": "D:\\cosmo-runs\\20261020-233820",
+  "settings": {
+    "fof_b": 0.2,
+    "hmf_fit_min_particles": 100,
+    "image_grid": 2048,
+    "min_members": 20,
+    "pk_grid": 2048,
+    "shot_noise_subtracted": true,
+    "threads": 16
+  },
+  "snapshots": [
+    {
+      "a": 0.1,
+      "file": "D:\\cosmo-runs\\20261020-233820\\snap_a0.100.bin",
+      "fof": {
+        "b": 0.2,
+        "halo_mass_fraction": 0.0,
+        "largest_halo": null,
+        "linking_length": 0.06510416666666667,
+        "min_members": 20,
+        "n_halos": 0,
+        "n_particles_in_halos": 0
+      },
+      "growth_D_over_Dinit": 5.0,
+      "k_nl": null,
+      "k_nl_gpu": null,
+      "k_nl_linear": null,
+      "k_nl_note": "Delta^2 never reaches 1 in the measured range",
+      "n_particles": 37748736,
+      "pk": {
+        "chi2_per_bin_vs_linear": 18.24112353222518,
+        "gpu_P_linear_over_meta_formula": 1.0026201331014135,
+        "gpu_a": 0.1,
+        "gpu_comparison_bins": 27,
+        "gpu_comparison_k_max": 1.6084954386379742,
+        "grid": 2048,
+        "k_nyquist": 3.2169908772759483,
+        "linear_regime_bins": 28,
+        "linear_test_k_max": 0.4827952317612523,
+        "mean_abs_ln_ratio_to_gpu": 0.004365359153978759,
+        "median_ratio_to_gpu": 1.0005467178017258,
+        "median_ratio_to_gpu_low_k": 1.0005467178017258,
+        "median_ratio_to_gpu_without_shot_subtraction": 1.0116613634627987,
+        "n_bins": 39,
+        "n_modes_ours_over_gpu": 1.0116710875331565,
+        "ratio_to_linear_mode_weighted": 0.935029127357748
+      },
+      "ps": {
+        "M_star_particles": null,
+        "cash_ps_bestfit": null,
+        "cash_ps_theory": null,
+        "cash_st": null,
+        "delta_c_bestfit": null,
+        "delta_c_bestfit_at_search_bound": null,
+        "delta_c_theory_2d_tophat": 1.4661830455652918,
+        "fit_halos": 0,
+        "fit_min_particles": 100,
+        "n_mass_bins": 0,
+        "n_mass_bins_fitted": null,
+        "ps_mass_fraction_above_min": 2.208781515870215e-9,
+        "sigma_at_min_mass": 0.24511699999914957,
+        "sigma_integral_k_range": [
+          0.0031415926535897933,
+          5.4613324012659366
+        ],
+        "st_delta_c_eff_sqrtq": null,
+        "st_p": null,
+        "st_q": null
+      },
+      "timings_s": {
+        "cic_incl_first_read": 0.0418997,
+        "fof": 0.8611319,
+        "halo_props": 1.2e-6,
+        "hmf_fit": 0.0102627,
+        "pk_total": 0.0802651,
+        "png": 0.0348973,
+        "total": 0.9879705
+      }
+    },
+    {
+      "a": 0.2,
+      "file": "D:\\cosmo-runs\\20261020-233820\\snap_a0.200.bin",
+      "fof": {
+        "b": 0.2,
+        "halo_mass_fraction": 0.0013379785749647352,
+        "largest_halo": {
+          "com": [
+            1668.8474718459108,
+            1785.1709663986314
+          ],
+          "mass_frac": 0.00003735224405924479,
+          "n_particles": 1410,
+          "sigma_v": 6.373728335104451
+        },
+        "linking_length": 0.06510416666666667,
+        "min_members": 20,
+        "n_halos": 268,
+        "n_particles_in_halos": 50507
+      },
+      "growth_D_over_Dinit": 10.0,
+      "k_nl": null,
+      "k_nl_gpu": null,
+      "k_nl_linear": null,
+      "k_nl_note": "Delta^2 never reaches 1 in the measured range",
+      "n_particles": 37748736,
+      "pk": {
+        "chi2_per_bin_vs_linear": 0.9396828174485407,
+        "gpu_P_linear_over_meta_formula": 1.0026201331014135,
+        "gpu_a": 0.2,
+        "gpu_comparison_bins": 31,
+        "gpu_comparison_k_max": 1.6084954386379742,
+        "grid": 2048,
+        "k_nyquist": 3.2169908772759483,
+        "linear_regime_bins": 25,
+        "linear_test_k_max": 0.4827952317612523,
+        "mean_abs_ln_ratio_to_gpu": 0.005527899661781309,
+        "median_ratio_to_gpu": 1.000560279457178,
+        "median_ratio_to_gpu_low_k": 1.0005258270795183,
+        "median_ratio_to_gpu_without_shot_subtraction": 1.0062588308875127,
+        "n_bins": 39,
+        "n_modes_ours_over_gpu": 1.0116710875331565,
+        "ratio_to_linear_mode_weighted": 1.0275704950089837
+      },
+      "ps": {
+        "M_star_particles": null,
+        "cash_ps_bestfit": 160.37414486084882,
+        "cash_ps_theory": 229.4181930941633,
+        "cash_st": 37.46202405130551,
+        "delta_c_bestfit": 1.5474788737158547,
+        "delta_c_bestfit_at_search_bound": false,
+        "delta_c_theory_2d_tophat": 1.4661830455652918,
+        "fit_halos": 136,
+        "fit_min_particles": 100,
+        "n_mass_bins": 19,
+        "n_mass_bins_fitted": 12,
+        "ps_mass_fraction_above_min": 0.00278226258109754,
+        "sigma_at_min_mass": 0.49023399999829914,
+        "sigma_integral_k_range": [
+          0.0031415926535897933,
+          5.4613324012659366
+        ],
+        "st_delta_c_eff_sqrtq": 1.0051644541359706,
+        "st_p": 0.49,
+        "st_q": 0.47
+      },
+      "timings_s": {
+        "cic_incl_first_read": 0.048414,
+        "fof": 0.8254452,
+        "halo_props": 0.0019627,
+        "hmf_fit": 0.0480001,
+        "pk_total": 0.0813033,
+        "png": 0.0386106,
+        "total": 0.9971329
+      }
+    },
+    {
+      "a": 0.333,
+      "file": "D:\\cosmo-runs\\20261020-233820\\snap_a0.333.bin",
+      "fof": {
+        "b": 0.2,
+        "halo_mass_fraction": 0.05497241020202637,
+        "largest_halo": {
+          "com": [
+            1003.4788931654323,
+            1816.0998547855559
+          ],
+          "mass_frac": 0.0002266301049126519,
+          "n_particles": 8555,
+          "sigma_v": 16.381256455058953
+        },
+        "linking_length": 0.06510416666666667,
+        "min_members": 20,
+        "n_halos": 11144,
+        "n_particles_in_halos": 2075139
+      },
+      "growth_D_over_Dinit": 16.650000000000002,
+      "k_nl": 1.1981044982834217,
+      "k_nl_gpu": 1.1956618489337127,
+      "k_nl_linear": null,
+      "k_nl_note": null,
+      "n_particles": 37748736,
+      "pk": {
+        "chi2_per_bin_vs_linear": 0.42122085236153617,
+        "gpu_P_linear_over_meta_formula": 1.0026204215899972,
+        "gpu_a": 0.333,
+        "gpu_comparison_bins": 34,
+        "gpu_comparison_k_max": 1.6084954386379742,
+        "grid": 2048,
+        "k_nyquist": 3.2169908772759483,
+        "linear_regime_bins": 18,
+        "linear_test_k_max": 0.4827952317612523,
+        "mean_abs_ln_ratio_to_gpu": 0.005840492201139475,
+        "median_ratio_to_gpu": 1.000366551849261,
+        "median_ratio_to_gpu_low_k": 1.0004676433996134,
+        "median_ratio_to_gpu_without_shot_subtraction": 1.0024089640817264,
+        "n_bins": 39,
+        "n_modes_ours_over_gpu": 1.0116710875331565,
+        "ratio_to_linear_mode_weighted": 1.0361028236645395
+      },
+      "ps": {
+        "M_star_particles": null,
+        "cash_ps_bestfit": 2265.108288352613,
+        "cash_ps_theory": 3425.7473190127776,
+        "cash_st": 262.93121712822614,
+        "delta_c_bestfit": 1.6412509858626283,
+        "delta_c_bestfit_at_search_bound": false,
+        "delta_c_theory_2d_tophat": 1.4661830455652918,
+        "fit_halos": 3922,
+        "fit_min_particles": 100,
+        "n_mass_bins": 27,
+        "n_mass_bins_fitted": 20,
+        "ps_mass_fraction_above_min": 0.07244828586856782,
+        "sigma_at_min_mass": 0.8162396099971682,
+        "sigma_integral_k_range": [
+          0.0031415926535897933,
+          5.4613324012659366
+        ],
+        "st_delta_c_eff_sqrtq": 0.7182800662309567,
+        "st_p": 0.46,
+        "st_q": 0.24000000000000002
+      },
+      "timings_s": {
+        "cic_incl_first_read": 0.0452217,
+        "fof": 0.8472065,
+        "halo_props": 0.0112554,
+        "hmf_fit": 0.0719993,
+        "pk_total": 0.0787304,
+        "png": 0.0402512,
+        "total": 1.0537303
+      }
+    },
+    {
+      "a": 0.5,
+      "file": "D:\\cosmo-runs\\20261020-233820\\snap_a0.500.bin",
+      "fof": {
+        "b": 0.2,
+        "halo_mass_fraction": 0.15171098709106445,
+        "largest_halo": {
+          "com": [
+            1015.9772573119386,
+            1827.3273355261692
+          ],
+          "mass_frac": 0.000743654039171007,
+          "n_particles": 28072,
+          "sigma_v": 29.402276027007375
+        },
+        "linking_length": 0.06510416666666667,
+        "min_members": 20,
+        "n_halos": 29350,
+        "n_particles_in_halos": 5726898
+      },
+      "growth_D_over_Dinit": 25.0,
+      "k_nl": 0.2731473516441272,
+      "k_nl_gpu": 0.27342917369118835,
+      "k_nl_linear": null,
+      "k_nl_note": null,
+      "n_particles": 37748736,
+      "pk": {
+        "chi2_per_bin_vs_linear": 0.4683186821251904,
+        "gpu_P_linear_over_meta_formula": 1.0026201331014135,
+        "gpu_a": 0.5,
+        "gpu_comparison_bins": 34,
+        "gpu_comparison_k_max": 1.6084954386379742,
+        "grid": 2048,
+        "k_nyquist": 3.2169908772759483,
+        "linear_regime_bins": 13,
+        "linear_test_k_max": 0.4827952317612523,
+        "mean_abs_ln_ratio_to_gpu": 0.00807640618159304,
+        "median_ratio_to_gpu": 1.0005448360104634,
+        "median_ratio_to_gpu_low_k": 1.0005190529323282,
+        "median_ratio_to_gpu_without_shot_subtraction": 1.0012990904640313,
+        "n_bins": 39,
+        "n_modes_ours_over_gpu": 1.0116710875331565,
+        "ratio_to_linear_mode_weighted": 1.054963796086919
+      },
+      "ps": {
+        "M_star_particles": null,
+        "cash_ps_bestfit": 873.3394399651736,
+        "cash_ps_theory": 8472.123727038426,
+        "cash_st": 353.8074407578447,
+        "delta_c_bestfit": 0.2000000000000005,
+        "delta_c_bestfit_at_search_bound": true,
+        "delta_c_theory_2d_tophat": 1.4661830455652918,
+        "fit_halos": 7971,
+        "fit_min_particles": 100,
+        "n_mass_bins": 32,
+        "n_mass_bins_fitted": 25,
+        "ps_mass_fraction_above_min": 0.2315673654446536,
+        "sigma_at_min_mass": 1.225584999995748,
+        "sigma_integral_k_range": [
+          0.0031415926535897933,
+          5.4613324012659366
+        ],
+        "st_delta_c_eff_sqrtq": 0.8030615274877352,
+        "st_p": 0.42,
+        "st_q": 0.30000000000000004
+      },
+      "timings_s": {
+        "cic_incl_first_read": 0.0462503,
+        "fof": 0.8837215,
+        "halo_props": 0.0212387,
+        "hmf_fit": 0.0806359,
+        "pk_total": 0.0800881,
+        "png": 0.0366559,
+        "total": 1.1056792
+      }
+    },
+    {
+      "a": 0.75,
+      "file": "D:\\cosmo-runs\\20261020-233820\\snap_a0.750.bin",
+      "fof": {
+        "b": 0.2,
+        "halo_mass_fraction": 0.2410198582543267,
+        "largest_halo": {
+          "com": [
+            1035.351176199648,
+            1846.6904719876668
+          ],
+          "mass_frac": 0.0046234925587972,
+          "n_particles": 174531,
+          "sigma_v": 65.71920458144338
+        },
+        "linking_length": 0.06510416666666667,
+        "min_members": 20,
+        "n_halos": 33543,
+        "n_particles_in_halos": 9098195
+      },
+      "growth_D_over_Dinit": 37.5,
+      "k_nl": 0.10040095174031037,
+      "k_nl_gpu": 0.1008427322886782,
+      "k_nl_linear": 0.18453708544553052,
+      "k_nl_note": null,
+      "n_particles": 37748736,
+      "pk": {
+        "chi2_per_bin_vs_linear": 0.1897988833870995,
+        "gpu_P_linear_over_meta_formula": 1.00262018680645,
+        "gpu_a": 0.75,
+        "gpu_comparison_bins": 34,
+        "gpu_comparison_k_max": 1.6084954386379742,
+        "grid": 2048,
+        "k_nyquist": 3.2169908772759483,
+        "linear_regime_bins": 9,
+        "linear_test_k_max": 0.4827952317612523,
+        "mean_abs_ln_ratio_to_gpu": 0.00944019783042044,
+        "median_ratio_to_gpu": 1.000643631207059,
+        "median_ratio_to_gpu_low_k": 1.0005841212307351,
+        "median_ratio_to_gpu_without_shot_subtraction": 1.0009282157049455,
+        "n_bins": 39,
+        "n_modes_ours_over_gpu": 1.0116710875331565,
+        "ratio_to_linear_mode_weighted": 1.0950454432580652
+      },
+      "ps": {
+        "M_star_particles": 385.04100004924186,
+        "cash_ps_bestfit": 657.4443992888702,
+        "cash_ps_theory": 11773.820658710134,
+        "cash_st": 483.31554854013115,
+        "delta_c_bestfit": 0.32986885268318833,
+        "delta_c_bestfit_at_search_bound": false,
+        "delta_c_theory_2d_tophat": 1.4661830455652918,
+        "fit_halos": 9043,
+        "fit_min_particles": 100,
+        "n_mass_bins": 40,
+        "n_mass_bins_fitted": 33,
+        "ps_mass_fraction_above_min": 0.42512866394458965,
+        "sigma_at_min_mass": 1.8383774999936218,
+        "sigma_integral_k_range": [
+          0.0031415926535897933,
+          5.4613324012659366
+        ],
+        "st_delta_c_eff_sqrtq": 0.6390943728351797,
+        "st_p": 0.4,
+        "st_q": 0.19
+      },
+      "timings_s": {
+        "cic_incl_first_read": 0.043869,
+        "fof": 0.8639673,
+        "halo_props": 0.0289157,
+        "hmf_fit": 0.1020033,
+        "pk_total": 0.0770393,
+        "png": 0.0367679,
+        "total": 1.1125778
+      }
+    },
+    {
+      "a": 1.0,
+      "file": "D:\\cosmo-runs\\20261020-233820\\snap_a1.000.bin",
+      "fof": {
+        "b": 0.2,
+        "halo_mass_fraction": 0.30843962563408744,
+        "largest_halo": {
+          "com": [
+            1549.4773771183295,
+            1656.9941035323877
+          ],
+          "mass_frac": 0.00635067621866862,
+          "n_particles": 239730,
+          "sigma_v": 63.42648038969081
+        },
+        "linking_length": 0.06510416666666667,
+        "min_members": 20,
+        "n_halos": 34808,
+        "n_particles_in_halos": 11643206
+      },
+      "growth_D_over_Dinit": 50.0,
+      "k_nl": 0.061358457324213,
+      "k_nl_gpu": 0.06134458278558673,
+      "k_nl_linear": 0.0985181614765941,
+      "k_nl_note": null,
+      "n_particles": 37748736,
+      "pk": {
+        "chi2_per_bin_vs_linear": 0.1447036445791547,
+        "gpu_P_linear_over_meta_formula": 1.0026201331014135,
+        "gpu_a": 1.0,
+        "gpu_comparison_bins": 34,
+        "gpu_comparison_k_max": 1.6084954386379742,
+        "grid": 2048,
+        "k_nyquist": 3.2169908772759483,
+        "linear_regime_bins": 5,
+        "linear_test_k_max": 0.4827952317612523,
+        "mean_abs_ln_ratio_to_gpu": 0.010813108903939416,
+        "median_ratio_to_gpu": 1.000482159803427,
+        "median_ratio_to_gpu_low_k": 1.000517482781069,
+        "median_ratio_to_gpu_without_shot_subtraction": 1.0006071971198365,
+        "n_bins": 39,
+        "n_modes_ours_over_gpu": 1.0116710875331565,
+        "ratio_to_linear_mode_weighted": 1.0418578143128638
+      },
+      "ps": {
+        "M_star_particles": 1662.8277725859693,
+        "cash_ps_bestfit": 591.1768712419139,
+        "cash_ps_theory": 9131.321760947585,
+        "cash_st": 563.6552707662527,
+        "delta_c_bestfit": 0.47949647240849724,
+        "delta_c_bestfit_at_search_bound": false,
+        "delta_c_theory_2d_tophat": 1.4661830455652918,
+        "fit_halos": 9801,
+        "fit_min_particles": 100,
+        "n_mass_bins": 41,
+        "n_mass_bins_fitted": 34,
+        "ps_mass_fraction_above_min": 0.549728648899077,
+        "sigma_at_min_mass": 2.451169999991496,
+        "sigma_integral_k_range": [
+          0.0031415926535897933,
+          5.4613324012659366
+        ],
+        "st_delta_c_eff_sqrtq": 0.7330915227826459,
+        "st_p": 0.38,
+        "st_q": 0.25
+      },
+      "timings_s": {
+        "cic_incl_first_read": 0.0428558,
+        "fof": 0.8791362,
+        "halo_props": 0.0392331,
+        "hmf_fit": 0.1048302,
+        "pk_total": 0.0765928,
+        "png": 0.0391521,
+        "total": 1.1431547
+      }
+    }
+  ]
+}

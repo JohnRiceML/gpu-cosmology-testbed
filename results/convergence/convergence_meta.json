@@ -1,0 +1,107 @@
+{
+  "M_complete_base": 16.954210063999998,
+  "M_hm_wdm": 317.89071069576556,
+  "base": "D:\\cosmo-runs\\experiments\\exp-corrected",
+  "beta_gamma_fixed": [
+    8.326132862184693,
+    -0.10881692705590458
+  ],
+  "conv_dir": "D:\\cosmo-runs\\experiments\\conv-20261021",
+  "converged_definition": "|ratio - 1| <= 10% or within 2 sigma (bootstrap / Poisson)",
+  "converged_vs_control_definition": "|ratio - 1| <= max(10%, 2 sqrt(err^2 + (control_ratio - 1)^2)) with the control (rerun) variant as reproducibility floor",
+  "pk_error_note": "P(k) ratios of same-seed variants have no cosmic variance (error 0: only the 10% criterion applies)",
+  "units": "physical: mass = particle count x particle_mass (box-area units, mean surface density 1)",
+  "variants": [
+    {
+      "M_complete_flag": false,
+      "M_complete_used": 16.954210063999998,
+      "host_matching": "Lagrangian particle overlap (lattice 6144 -> 6144)",
+      "mw_matched": 30,
+      "particle_mass": 0.1059638129,
+      "particle_mass_over_base": 1.0,
+      "same_seed": true,
+      "shared_frac_median": 1.0,
+      "variant": "control",
+      "wdm_pairing": "particle IDs",
+      "what_changed": "nothing: base settings rerun with the current code (reproducibility floor)"
+    },
+    {
+      "M_complete_flag": false,
+      "M_complete_used": 16.954210063999998,
+      "host_matching": "Lagrangian particle overlap (lattice 6144 -> 6144)",
+      "mw_matched": 30,
+      "particle_mass": 0.1059638129,
+      "particle_mass_over_base": 1.0,
+      "same_seed": true,
+      "shared_frac_median": 0.9980157404561792,
+      "variant": "control_repeat",
+      "wdm_pairing": "no WDM model",
+      "what_changed": "variant"
+    },
+    {
+      "M_complete_flag": false,
+      "M_complete_used": 16.954210063999998,
+      "host_matching": "Lagrangian particle overlap (lattice 6144 -> 6144)",
+      "mw_matched": 27,
+      "particle_mass": 0.1059638129,
+      "particle_mass_over_base": 1.0,
+      "same_seed": true,
+      "shared_frac_median": 0.9628387582295816,
+      "variant": "eps2x",
+      "wdm_pairing": "particle IDs",
+      "what_changed": "softening 0.052 instead of 0.026"
+    },
+    {
+      "M_complete_flag": false,
+      "M_complete_used": 16.954210063999998,
+      "host_matching": "Lagrangian particle overlap (lattice 6144 -> 6144)",
+      "mw_matched": 30,
+      "particle_mass": 0.1059638129,
+      "particle_mass_over_base": 1.0,
+      "same_seed": true,
+      "shared_frac_median": 0.9875665625276685,
+      "variant": "eta_half",
+      "wdm_pairing": "particle IDs",
+      "what_changed": "timestep eta 0.0125 instead of 0.025"
+    },
+    {
+      "M_complete_flag": false,
+      "M_complete_used": 16.954210063999998,
+      "host_matching": "Lagrangian particle overlap (lattice 6144 -> 6144)",
+      "mw_matched": 28,
+      "particle_mass": 0.1059638129,
+      "particle_mass_over_base": 1.0,
+      "same_seed": true,
+      "shared_frac_median": 0.9775823034218849,
+      "variant": "mesh2048",
+      "wdm_pairing": "particle IDs",
+      "what_changed": "PM mesh 2048 instead of 4096 (PP range doubles)"
+    },
+    {
+      "M_complete_flag": true,
+      "M_complete_used": 67.816840272,
+      "host_matching": "Lagrangian particle overlap (lattice 6144 -> 3072)",
+      "mw_matched": 27,
+      "particle_mass": 0.4238552517,
+      "particle_mass_over_base": 4.000000000943719,
+      "same_seed": true,
+      "shared_frac_median": 0.9570126513399537,
+      "variant": "np3072",
+      "wdm_pairing": "particle IDs",
+      "what_changed": "3072^2 particles (particle mass x4), same initial field sampled coarser"
+    },
+    {
+      "M_complete_flag": false,
+      "M_complete_used": 16.954210063999998,
+      "host_matching": "none: different seed, own top-n hosts compared statistically",
+      "mw_matched": 30,
+      "particle_mass": 0.1059638129,
+      "particle_mass_over_base": 1.0,
+      "same_seed": false,
+      "shared_frac_median": null,
+      "variant": "seed2",
+      "wdm_pairing": "particle IDs",
+      "what_changed": "different random seed (cosmic variance, not convergence)"
+    }
+  ]
+}

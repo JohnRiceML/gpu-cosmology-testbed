@@ -1,0 +1,4 @@
+model,M_hm,n_hosts,n_direct,n_direct_err,n_direct_host_boot_err,n_emulator,emulator_over_direct,pass
+wdm_khm3.12,30.000008143595295,28,918.613,30.309,202.178,889.280,0.9681,true
+wdm_khm0.99,299.99988164216063,28,981.024,31.321,200.726,865.295,0.8820,false
+wdm_khm0.31,2999.9931296900845,24,341.199,18.472,78.668,322.681,0.9457,true

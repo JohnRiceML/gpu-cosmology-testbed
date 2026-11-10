@@ -1,0 +1,78 @@
+variant,what_changed,quantity,ratio_to_base,err,converged,control_ratio,converged_vs_control
+control,"nothing: base settings rerun with the current code (reproducibility floor)",cdm:pk_median_ratio_k_le_half_nyq,1.000000e0,0.000000e0,true,nan,
+control,"nothing: base settings rerun with the current code (reproducibility floor)",cdm:pk_worst_ratio_k_le_half_nyq,1.000000e0,0.000000e0,true,nan,
+control,"nothing: base settings rerun with the current code (reproducibility floor)",wdm:pk_median_ratio_k_le_half_nyq,1.000000e0,0.000000e0,true,nan,
+control,"nothing: base settings rerun with the current code (reproducibility floor)",wdm:pk_worst_ratio_k_le_half_nyq,1.000000e0,0.000000e0,true,nan,
+control,"nothing: base settings rerun with the current code (reproducibility floor)",cdm:fof_N_gt_Mcomplete,1.000000e0,1.314936e-2,true,nan,
+control,"nothing: base settings rerun with the current code (reproducibility floor)",cdm:fof_N_gt_100Mcomplete,1.000000e0,1.482499e-1,true,nan,
+control,"nothing: base settings rerun with the current code (reproducibility floor)",wdm:fof_N_gt_Mcomplete,1.000000e0,2.195021e-2,true,nan,
+control,"nothing: base settings rerun with the current code (reproducibility floor)",wdm:fof_N_gt_100Mcomplete,1.000000e0,1.552301e-1,true,nan,
+control,"nothing: base settings rerun with the current code (reproducibility floor)",cdm:n_sub_per_host_ge_Mcomplete,1.000000e0,0.000000e0,true,nan,
+control,"nothing: base settings rerun with the current code (reproducibility floor)",wdm:n_sub_per_host_ge_Mcomplete,1.000000e0,0.000000e0,true,nan,
+control,"nothing: base settings rerun with the current code (reproducibility floor)",wdm/cdm:M50_fixed_beta_gamma,1.000000e0,1.005151e-1,true,nan,
+control,"nothing: base settings rerun with the current code (reproducibility floor)",wdm/cdm:sat_count_ratio_wdm_over_cdm_per_host,1.000000e0,8.336169e-2,true,nan,
+control_repeat,"variant",cdm:pk_median_ratio_k_le_half_nyq,1.000000e0,0.000000e0,true,1.000000e0,true
+control_repeat,"variant",cdm:pk_worst_ratio_k_le_half_nyq,1.000029e0,0.000000e0,true,1.000000e0,true
+control_repeat,"variant",cdm:fof_N_gt_Mcomplete,1.001124e0,1.316044e-2,true,1.000000e0,true
+control_repeat,"variant",cdm:fof_N_gt_100Mcomplete,1.010989e0,1.494711e-1,true,1.000000e0,true
+control_repeat,"variant",cdm:n_sub_per_host_ge_Mcomplete,1.013748e0,1.551524e-2,true,1.000000e0,true
+eps2x,"softening 0.052 instead of 0.026",cdm:pk_median_ratio_k_le_half_nyq,9.999253e-1,0.000000e0,true,1.000000e0,true
+eps2x,"softening 0.052 instead of 0.026",cdm:pk_worst_ratio_k_le_half_nyq,9.921278e-1,0.000000e0,true,1.000000e0,true
+eps2x,"softening 0.052 instead of 0.026",wdm:pk_median_ratio_k_le_half_nyq,9.999932e-1,0.000000e0,true,1.000000e0,true
+eps2x,"softening 0.052 instead of 0.026",wdm:pk_worst_ratio_k_le_half_nyq,9.949573e-1,0.000000e0,true,1.000000e0,true
+eps2x,"softening 0.052 instead of 0.026",cdm:fof_N_gt_Mcomplete,9.957638e-1,1.310758e-2,true,1.000000e0,true
+eps2x,"softening 0.052 instead of 0.026",cdm:fof_N_gt_100Mcomplete,1.021978e0,1.506913e-1,true,1.000000e0,true
+eps2x,"softening 0.052 instead of 0.026",wdm:fof_N_gt_Mcomplete,9.980728e-1,2.191848e-2,true,1.000000e0,true
+eps2x,"softening 0.052 instead of 0.026",wdm:fof_N_gt_100Mcomplete,1.072289e0,1.636221e-1,true,1.000000e0,true
+eps2x,"softening 0.052 instead of 0.026",cdm:n_sub_per_host_ge_Mcomplete,9.130112e-1,4.804053e-2,true,1.000000e0,true
+eps2x,"softening 0.052 instead of 0.026",wdm:n_sub_per_host_ge_Mcomplete,1.060302e0,6.456137e-2,true,1.000000e0,true
+eps2x,"softening 0.052 instead of 0.026",wdm/cdm:M50_fixed_beta_gamma,8.042629e-1,8.054370e-2,false,1.000000e0,false
+eps2x,"softening 0.052 instead of 0.026",wdm/cdm:sat_count_ratio_wdm_over_cdm_per_host,1.195180e0,1.053909e-1,true,1.000000e0,true
+eta_half,"timestep eta 0.0125 instead of 0.025",cdm:pk_median_ratio_k_le_half_nyq,1.000021e0,0.000000e0,true,1.000000e0,true
+eta_half,"timestep eta 0.0125 instead of 0.025",cdm:pk_worst_ratio_k_le_half_nyq,1.000314e0,0.000000e0,true,1.000000e0,true
+eta_half,"timestep eta 0.0125 instead of 0.025",wdm:pk_median_ratio_k_le_half_nyq,1.000006e0,0.000000e0,true,1.000000e0,true
+eta_half,"timestep eta 0.0125 instead of 0.025",wdm:pk_worst_ratio_k_le_half_nyq,1.000349e0,0.000000e0,true,1.000000e0,true
+eta_half,"timestep eta 0.0125 instead of 0.025",cdm:fof_N_gt_Mcomplete,1.002680e0,1.317579e-2,true,1.000000e0,true
+eta_half,"timestep eta 0.0125 instead of 0.025",cdm:fof_N_gt_100Mcomplete,1.021978e0,1.506913e-1,true,1.000000e0,true
+eta_half,"timestep eta 0.0125 instead of 0.025",wdm:fof_N_gt_Mcomplete,1.011323e0,2.213652e-2,true,1.000000e0,true
+eta_half,"timestep eta 0.0125 instead of 0.025",wdm:fof_N_gt_100Mcomplete,1.024096e0,1.580327e-1,true,1.000000e0,true
+eta_half,"timestep eta 0.0125 instead of 0.025",cdm:n_sub_per_host_ge_Mcomplete,1.018813e0,2.509716e-2,true,1.000000e0,true
+eta_half,"timestep eta 0.0125 instead of 0.025",wdm:n_sub_per_host_ge_Mcomplete,1.007426e0,2.659991e-2,true,1.000000e0,true
+eta_half,"timestep eta 0.0125 instead of 0.025",wdm/cdm:M50_fixed_beta_gamma,9.858523e-1,1.119206e-1,true,1.000000e0,true
+eta_half,"timestep eta 0.0125 instead of 0.025",wdm/cdm:sat_count_ratio_wdm_over_cdm_per_host,9.813255e-1,8.452863e-2,true,1.000000e0,true
+mesh2048,"PM mesh 2048 instead of 4096 (PP range doubles)",cdm:pk_median_ratio_k_le_half_nyq,9.997458e-1,0.000000e0,true,1.000000e0,true
+mesh2048,"PM mesh 2048 instead of 4096 (PP range doubles)",cdm:pk_worst_ratio_k_le_half_nyq,7.143155e-1,0.000000e0,false,1.000000e0,false
+mesh2048,"PM mesh 2048 instead of 4096 (PP range doubles)",wdm:pk_median_ratio_k_le_half_nyq,9.999754e-1,0.000000e0,true,1.000000e0,true
+mesh2048,"PM mesh 2048 instead of 4096 (PP range doubles)",wdm:pk_worst_ratio_k_le_half_nyq,7.142705e-1,0.000000e0,false,1.000000e0,false
+mesh2048,"PM mesh 2048 instead of 4096 (PP range doubles)",cdm:fof_N_gt_Mcomplete,1.004582e0,1.319454e-2,true,1.000000e0,true
+mesh2048,"PM mesh 2048 instead of 4096 (PP range doubles)",cdm:fof_N_gt_100Mcomplete,1.032967e0,1.519105e-1,true,1.000000e0,true
+mesh2048,"PM mesh 2048 instead of 4096 (PP range doubles)",wdm:fof_N_gt_Mcomplete,1.000241e0,2.195417e-2,true,1.000000e0,true
+mesh2048,"PM mesh 2048 instead of 4096 (PP range doubles)",wdm:fof_N_gt_100Mcomplete,1.024096e0,1.580327e-1,true,1.000000e0,true
+mesh2048,"PM mesh 2048 instead of 4096 (PP range doubles)",cdm:n_sub_per_host_ge_Mcomplete,9.885233e-1,3.557222e-2,true,1.000000e0,true
+mesh2048,"PM mesh 2048 instead of 4096 (PP range doubles)",wdm:n_sub_per_host_ge_Mcomplete,1.047980e0,2.141293e-2,true,1.000000e0,true
+mesh2048,"PM mesh 2048 instead of 4096 (PP range doubles)",wdm/cdm:M50_fixed_beta_gamma,9.249555e-1,7.547141e-2,true,1.000000e0,true
+mesh2048,"PM mesh 2048 instead of 4096 (PP range doubles)",wdm/cdm:sat_count_ratio_wdm_over_cdm_per_host,1.090923e0,8.686416e-2,true,1.000000e0,true
+np3072,"3072^2 particles (particle mass x4), same initial field sampled coarser",cdm:pk_median_ratio_k_le_half_nyq,1.000294e0,0.000000e0,true,1.000000e0,true
+np3072,"3072^2 particles (particle mass x4), same initial field sampled coarser",cdm:pk_worst_ratio_k_le_half_nyq,9.766880e-1,0.000000e0,true,1.000000e0,true
+np3072,"3072^2 particles (particle mass x4), same initial field sampled coarser",wdm:pk_median_ratio_k_le_half_nyq,1.000392e0,0.000000e0,true,1.000000e0,true
+np3072,"3072^2 particles (particle mass x4), same initial field sampled coarser",wdm:pk_worst_ratio_k_le_half_nyq,9.679091e-1,0.000000e0,true,1.000000e0,true
+np3072,"3072^2 particles (particle mass x4), same initial field sampled coarser",cdm:fof_N_gt_Mcomplete,1.099147e0,2.863435e-2,true,1.000000e0,true
+np3072,"3072^2 particles (particle mass x4), same initial field sampled coarser",cdm:fof_N_gt_100Mcomplete,1.047619e0,3.196073e-1,true,1.000000e0,true
+np3072,"3072^2 particles (particle mass x4), same initial field sampled coarser",wdm:fof_N_gt_Mcomplete,1.046414e0,3.592735e-2,true,1.000000e0,true
+np3072,"3072^2 particles (particle mass x4), same initial field sampled coarser",wdm:fof_N_gt_100Mcomplete,9.545455e-1,2.912124e-1,true,1.000000e0,true
+np3072,"3072^2 particles (particle mass x4), same initial field sampled coarser",cdm:n_sub_per_host_ge_Mcomplete,1.013055e0,8.324361e-2,true,1.000000e0,true
+np3072,"3072^2 particles (particle mass x4), same initial field sampled coarser",wdm:n_sub_per_host_ge_Mcomplete,9.530686e-1,3.287897e-2,true,1.000000e0,true
+np3072,"3072^2 particles (particle mass x4), same initial field sampled coarser",wdm/cdm:M50_fixed_beta_gamma,1.195623e0,1.485183e-1,true,1.000000e0,true
+np3072,"3072^2 particles (particle mass x4), same initial field sampled coarser",wdm/cdm:sat_count_ratio_wdm_over_cdm_per_host,9.601256e-1,8.497451e-2,true,1.000000e0,true
+seed2,"different random seed (cosmic variance, not convergence)",cdm:pk_median_ratio_k_le_half_nyq,1.005235e0,0.000000e0,true,1.000000e0,true
+seed2,"different random seed (cosmic variance, not convergence)",cdm:pk_worst_ratio_k_le_half_nyq,2.496525e0,0.000000e0,false,1.000000e0,false
+seed2,"different random seed (cosmic variance, not convergence)",wdm:pk_median_ratio_k_le_half_nyq,9.810798e-1,0.000000e0,true,1.000000e0,true
+seed2,"different random seed (cosmic variance, not convergence)",wdm:pk_worst_ratio_k_le_half_nyq,2.496599e0,0.000000e0,false,1.000000e0,false
+seed2,"different random seed (cosmic variance, not convergence)",cdm:fof_N_gt_Mcomplete,1.005792e0,1.320647e-2,true,1.000000e0,true
+seed2,"different random seed (cosmic variance, not convergence)",cdm:fof_N_gt_100Mcomplete,1.296703e0,1.809056e-1,true,1.000000e0,true
+seed2,"different random seed (cosmic variance, not convergence)",wdm:fof_N_gt_Mcomplete,9.944592e-1,2.185897e-2,true,1.000000e0,true
+seed2,"different random seed (cosmic variance, not convergence)",wdm:fof_N_gt_100Mcomplete,1.361446e0,1.968113e-1,true,1.000000e0,true
+seed2,"different random seed (cosmic variance, not convergence)",cdm:n_sub_per_host_ge_Mcomplete,8.806078e-1,2.537414e-1,true,1.000000e0,true
+seed2,"different random seed (cosmic variance, not convergence)",wdm:n_sub_per_host_ge_Mcomplete,9.093679e-1,2.788367e-1,true,1.000000e0,true
+seed2,"different random seed (cosmic variance, not convergence)",wdm/cdm:M50_fixed_beta_gamma,8.872014e-1,9.822100e-2,true,1.000000e0,true
+seed2,"different random seed (cosmic variance, not convergence)",wdm/cdm:sat_count_ratio_wdm_over_cdm_per_host,1.101800e0,9.125847e-2,true,1.000000e0,true
